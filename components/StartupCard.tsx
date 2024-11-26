@@ -5,13 +5,13 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Author, Startup } from "@/sanity/types";
 import { Skeleton } from "@/components/ui/skeleton";
-import DeleteButton from "./DeletePitch";
-import { auth } from "@/auth";
+// import DeleteButton from "./DeletePitch";
+// import { auth } from "@/auth";
 
 export type StartupTypeCard = Omit<Startup, "author"> & { author?: Author };
 
 export default async function StartupCard({ post }: { post: StartupTypeCard }) {
-  const session = await auth();
+  // const session = await auth();
 
   const {
     _createdAt,
@@ -57,13 +57,7 @@ export default async function StartupCard({ post }: { post: StartupTypeCard }) {
       <Link href={`/startup/${_id}`}>
         <p className="startup-card_desc">{description}</p>
 
-        <Image
-          src={image}
-          width={380}
-          height={380}
-          alt="placeholder"
-          className="startup-card_img"
-        />
+        <img src={image} alt="placeholder" className="startup-card_img" />
       </Link>
 
       <div className="flex-between gap-3 mt-5">
@@ -74,11 +68,11 @@ export default async function StartupCard({ post }: { post: StartupTypeCard }) {
           <Link href={`/startup/${_id}`}>Details</Link>
         </Button>
 
-        {session && <DeleteButton documentId={_id} />}
+        {/* {session && <DeleteButton documentId={_id} />} */}
 
-        <Button className="startup-card_btn" asChild>
+        {/* <Button className="startup-card_btn" asChild>
           <Link href={`/startup/edit/${_id}`}>Edit</Link>
-        </Button>
+        </Button> */}
       </div>
     </li>
   );
